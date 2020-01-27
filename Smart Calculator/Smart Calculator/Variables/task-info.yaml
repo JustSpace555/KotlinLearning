@@ -1,0 +1,57 @@
+type: edu
+custom_name: stage6
+files:
+- name: test/Test.java
+  visible: false
+  learner_created: false
+- name: src/calculator/Main.kt
+  visible: true
+  text: "package calculator\n\nimport java.lang.Exception\nimport java.util.*\n\n\
+    fun choosePriority(symbol: Char): Int {\n\tif (symbol == '*' || symbol == '/')\n\
+    \t\treturn 3\n\telse if (symbol == '+' || symbol == '-')\n\t\treturn 2\n\treturn\
+    \ 1\n}\n\n\nfun pushToStackAndCheck(stack: Stack<Char>, str: String): Boolean\
+    \ {\n\tstack.push(str.first())\n\treturn if (str.first() == '-')\n\t\tstr.length\
+    \ % 2 == 0\n\telse\n\t\tfalse\n}\n\nfun validation(str: String): Boolean {\n\t\
+    var isNumber = false\n\tvar isSymbol = false\n\n\tfor (i in 0 until str.length)\
+    \ {\n\t\tif (!str[i].isDigit() && str[i] != '+' && str[i] != '-' && str[i] !=\
+    \ '/' && str[i] != '*')\n\t\t\treturn false\n\t\tif (!isNumber && str[i].isDigit())\n\
+    \t\t\tisNumber = true\n\t\tif (!isSymbol && (str[i] == '+' || str[i] == '-' ||\
+    \ str[i] == '/' || str[i] == '*')) {\n\t\t\tif ((str[i] == '-' || str[i] == '+')\
+    \ && i != 0)\n\t\t\t\tisSymbol = true\n\t\t}\n\t}\n\tif (isNumber && isSymbol)\n\
+    \t\treturn false\n\treturn true\n}\n\nfun polishNotation(str: String): String?\
+    \ {\n\tvar final = \"\"\n\tval stack: Stack<Char> = Stack()\n\tval scan = Scanner(str)\n\
+    \tvar temp: String\n\tvar ifOddAmountMinuses = false\n\n\twhile (scan.hasNext())\
+    \ {\n\t\ttemp = scan.next()\n\t\tif (!validation(temp)) {\n\t\t\tprintln(\"Invalid\
+    \ expression\")\n\t\t\treturn null\n\t\t}\n\t\ttry {\n\t\t\tfinal += if (ifOddAmountMinuses)\n\
+    \t\t\t\t'-' + temp.toInt().toString()\n\t\t\telse\n\t\t\t\ttemp.toInt().toString()\n\
+    \t\t\tfinal += ' '\n\t\t} catch (e: Exception) {\n\t\t\tif (!stack.isEmpty())\
+    \ {\n\t\t\t\tif (temp.first() == ')') {\n\t\t\t\t\twhile (stack.peek() != '(')\n\
+    \t\t\t\t\t\tfinal += stack.pop() + \" \"\n\t\t\t\t\tstack.pop()\n\t\t\t\t} else\
+    \ {\n\t\t\t\t\twhile (!stack.isEmpty() && choosePriority(stack.peek()) >= choosePriority(temp.first()))\n\
+    \t\t\t\t\t\tfinal += stack.pop() + \" \"\n\t\t\t\t\tifOddAmountMinuses = pushToStackAndCheck(stack,\
+    \ temp)\n\t\t\t\t}\n\t\t\t}\n\t\t\telse\n\t\t\t\tifOddAmountMinuses = pushToStackAndCheck(stack,\
+    \ temp)\n\t\t}\n\t}\n\twhile (!stack.isEmpty())\n\t\tfinal += stack.pop() + \"\
+    \ \"\n\treturn final\n}\n\nfun calcPolishNotation(str: String): Int? {\n\tval\
+    \ stack: Stack<Int> = Stack()\n\tval scan: Scanner = Scanner(str)\n\tvar temp:\
+    \ String\n\tvar firstNum: Int\n\tvar secondNum: Int\n\n\twhile (scan.hasNext())\
+    \ {\n\t\ttemp = scan.next()\n\t\tif (temp != \"-\" && temp != \"+\" && temp !=\
+    \ \"*\" && temp != \"/\")\n\t\t\tstack.push(temp.toInt())\n\t\telse {\n\t\t\t\
+    secondNum = stack.pop()\n\t\t\tfirstNum = stack.pop()\n\t\t\twhen (temp) {\n\t\
+    \t\t\t\"+\" -> stack.push(firstNum + secondNum)\n\t\t\t\t\"-\" -> stack.push(firstNum\
+    \ - secondNum)\n\t\t\t\t\"*\" -> stack.push(firstNum * secondNum)\n\t\t\t\t\"\
+    /\" -> stack.push(firstNum / secondNum)\n\t\t\t}\n\t\t}\n\t}\n\tfirstNum = stack.pop()\n\
+    \tif (!stack.isEmpty()) {\n\t\tprintln(\"Invalid expression\")\n\t\treturn null\n\
+    \t}\n\treturn firstNum\n}\n\nfun main() {\n\tval scan = Scanner(System.`in`)\n\
+    \tvar str: String\n\tvar tempStr: String?\n\tvar tempInt: Int?\n\n\twhile (scan.hasNextLine())\
+    \ {\n\t\tstr = scan.nextLine()\n\t\tif (str.length > 1 && str.first() == '/' &&\
+    \ str != \"/exit\" && str != \"/help\") {\n\t\t\tprintln(\"Unknown command\")\n\
+    \t\t\tcontinue\n\t\t}\n\t\tif (\"/exit\" == str) {\n\t\t\tprintln(\"Bye!\")\n\t\
+    \t\treturn\n\t\t}\n\t\tif (\"/help\" == str) {\n\t\t\tprintln(\"The program calculates\
+    \ the sum of numbers\")\n\t\t\tcontinue\n\t\t}\n\t\tif (\"\\n\" == str || str.isEmpty())\n\
+    \t\t\tcontinue\n\t\ttempStr = polishNotation(str)\n\t\tif (tempStr != null) {\n\
+    \t\t\ttempInt = calcPolishNotation(tempStr)\n\t\t\tif (tempInt != null)\n\t\t\t\
+    \tprintln(tempInt)\n\t\t}\n\t}\n}"
+  learner_created: false
+feedback_link: https://hyperskill.org/projects/88/stages/491/implement
+status: Solved
+record: 5

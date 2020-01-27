@@ -1,0 +1,18 @@
+type: edu
+custom_name: stage1
+files:
+- name: src/calculator/Main.kt
+  visible: true
+  text: |
+    package calculator
+
+    fun main() {
+        println("Hello, World!")
+    }
+  learner_created: false
+- name: test/Test.java
+  visible: false
+  learner_created: false
+feedback_link: https://hyperskill.org/projects/88/stages/486/implement
+status: Unchecked
+record: 6

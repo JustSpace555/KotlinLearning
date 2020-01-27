@@ -1,0 +1,23 @@
+type: edu
+custom_name: stage2
+files:
+- name: test/Test.java
+  visible: false
+  learner_created: false
+- name: src/calculator/Main.kt
+  visible: true
+  text: |
+    package calculator
+
+    import  java.util.Scanner;
+
+    fun main() {
+        val scan = Scanner(System.`in`)
+        val a = scan.nextLong();
+        val b = scan.nextLong();
+        println(a + b)
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/projects/88/stages/487/implement
+status: Unchecked
+record: 7

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ae97a579-ec7a-4b50-b442-be1dee90afa3" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+      </list>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/.software/CodeTime.txt" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/SimVillage.kt" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectId" id="1WnsR8RUmx4bDbJppRLA58uJWQw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="tasks.servers" />
+  </component>
+  <component name="RunManager" selected="Kotlin.TavernKt">
+    <configuration name="SimVillageKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
+      <module name="Sandbox" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="SimVillageKt" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TavernKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
+      <module name="Sandbox" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="TavernKt" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Kotlin.TavernKt" />
+        <item itemvalue="Kotlin.SimVillageKt" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ae97a579-ec7a-4b50-b442-be1dee90afa3" name="Default Changelist" comment="" />
+      <created>1579796682886</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579796682886</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="978" y="359" key="#Kotlin" timestamp="1579797136843">
+      <screen x="0" y="23" width="2560" height="1337" />
+    </state>
+    <state x="978" y="359" key="#Kotlin/0.23.2560.1337@0.23.2560.1337" timestamp="1579797136843" />
+    <state x="1385" y="382" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579805777423">
+      <screen x="0" y="0" width="2560" height="1360" />
+    </state>
+    <state x="1385" y="382" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1360@0.0.2560.1360" timestamp="1579805777423" />
+    <state x="1103" y="537" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1579797201988">
+      <screen x="0" y="23" width="2560" height="1337" />
+    </state>
+    <state x="1103" y="537" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1579797201988" />
+    <state x="1586" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1579965117009">
+      <screen x="0" y="0" width="2560" height="1360" />
+    </state>
+    <state x="1586" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1360@0.0.2560.1360" timestamp="1579965117009" />
+    <state width="1284" height="408" key="GridCell.Tab.0.bottom" timestamp="1579985955730">
+      <screen x="0" y="0" width="2560" height="1360" />
+    </state>
+    <state width="1284" height="408" key="GridCell.Tab.0.bottom/0.0.2560.1360@0.0.2560.1360" timestamp="1579985955730" />
+    <state width="1284" height="408" key="GridCell.Tab.0.center" timestamp="1579985955729">
+      <screen x="0" y="0" width="2560" height="1360" />
+    </state>
+    <state width="1284" height="408" key="GridCell.Tab.0.center/0.0.2560.1360@0.0.2560.1360" timestamp="1579985955729" />
+    <state width="1284" height="408" key="GridCell.Tab.0.left" timestamp="1579985955729">
+      <screen x="0" y="0" width="2560" height="1360" />
+    </state>
+    <state width="1284" height="408" key="GridCell.Tab.0.left/0.0.2560.1360@0.0.2560.1360" timestamp="1579985955729" />
+    <state width="1284" height="408" key="GridCell.Tab.0.right" timestamp="1579985955730">
+      <screen x="0" y="0" width="2560" height="1360" />
+    </state>
+    <state width="1284" height="408" key="GridCell.Tab.0.right/0.0.2560.1360@0.0.2560.1360" timestamp="1579985955730" />
+    <state x="437" y="286" width="1188" height="722" key="SettingsEditor" timestamp="1579978534067">
+      <screen x="0" y="0" width="2560" height="1360" />
+    </state>
+    <state x="437" y="286" width="1188" height="722" key="SettingsEditor/0.0.2560.1360@0.0.2560.1360" timestamp="1579978534067" />
+    <state x="887" y="332" key="SettingsEditor/0.23.2560.1337@0.23.2560.1337" timestamp="1579797116363" />
+    <state x="1034" y="528" key="com.intellij.ide.util.TipDialog" timestamp="1579965055990">
+      <screen x="0" y="23" width="2560" height="1337" />
+    </state>
+    <state x="1034" y="514" key="com.intellij.ide.util.TipDialog/0.0.2560.1360@0.0.2560.1360" timestamp="1579958678509" />
+    <state x="1034" y="528" key="com.intellij.ide.util.TipDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1579965055990" />
+    <state x="1563" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1579976481803">
+      <screen x="0" y="0" width="2560" height="1360" />
+    </state>
+    <state x="1563" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1360@0.0.2560.1360" timestamp="1579976481803" />
+  </component>
+</project>

@@ -1,0 +1,44 @@
+type: edu
+custom_name: stage5
+files:
+- name: test/Test.java
+  visible: false
+  learner_created: false
+- name: src/calculator/Main.kt
+  visible: true
+  text: "package calculator\n\nimport java.lang.Exception\nimport java.util.*\n\n\
+    fun choosePriority(symb: Char): Int {\n\tif (symb == '*' || symb == '/')\n\t\t\
+    return 3\n\telse if (symb == '+' || symb == '-')\n\t\treturn 2\n\treturn 1\n}\n\
+    \n\nfun pushToStackAndCheck(stack: Stack<Char>, str: String): Boolean {\n\tstack.push(str.first())\n\
+    \treturn if (str.first() == '-')\n\t\tstr.length % 2 == 0\n\telse\n\t\tfalse\n\
+    }\n\nfun polishNotation(str: String): String {\n\tvar final = \"\"\n\tval stack:\
+    \ Stack<Char> = Stack()\n\tval scan = Scanner(str)\n\tvar temp: String\n\tvar\
+    \ ifOddAmountMinuses = false\n\n\twhile (scan.hasNext()) {\n\t\ttemp = scan.next()\n\
+    \t\ttry {\n\t\t\tfinal += if (ifOddAmountMinuses)\n\t\t\t\t'-' + temp.toInt().toString()\n\
+    \t\t\telse\n\t\t\t\ttemp.toInt().toString()\n\t\t\tfinal += ' '\n\t\t} catch (e:\
+    \ Exception) {\n\t\t\tif (!stack.isEmpty()) {\n\t\t\t\tif (temp.first() == ')')\
+    \ {\n\t\t\t\t\twhile (stack.peek() != '(')\n\t\t\t\t\t\tfinal += stack.pop() +\
+    \ \" \"\n\t\t\t\t\tstack.pop()\n\t\t\t\t} else {\n\t\t\t\t\twhile (!stack.isEmpty()\
+    \ && choosePriority(stack.peek()) >= choosePriority(temp.first()))\n\t\t\t\t\t\
+    \tfinal += stack.pop() + \" \"\n\t\t\t\t\tifOddAmountMinuses = pushToStackAndCheck(stack,\
+    \ temp)\n\t\t\t\t}\n\t\t\t}\n\t\t\telse\n\t\t\t\tifOddAmountMinuses = pushToStackAndCheck(stack,\
+    \ temp)\n\t\t}\n\t}\n\twhile (!stack.isEmpty())\n\t\tfinal += stack.pop() + \"\
+    \ \"\n\treturn final\n}\n\nfun calcPolishNotation(str: String): Int {\n\tval stack:\
+    \ Stack<Int> = Stack()\n\tval scan: Scanner = Scanner(str)\n\tvar temp: String\n\
+    \tvar firstNum: Int\n\tvar secondNum: Int\n\n\twhile (scan.hasNext()) {\n\t\t\
+    temp = scan.next()\n\t\tif (temp != \"-\" && temp != \"+\" && temp != \"*\" &&\
+    \ temp != \"/\")\n\t\t\tstack.push(temp.toInt())\n\t\telse {\n\t\t\tsecondNum\
+    \ = stack.pop()\n\t\t\tfirstNum = stack.pop()\n\t\t\twhen (temp) {\n\t\t\t\t\"\
+    +\" -> stack.push(firstNum + secondNum)\n\t\t\t\t\"-\" -> stack.push(firstNum\
+    \ - secondNum)\n\t\t\t\t\"*\" -> stack.push(firstNum * secondNum)\n\t\t\t\t\"\
+    /\" -> stack.push(firstNum / secondNum)\n\t\t\t}\n\t\t}\n\t}\n\treturn stack.pop()\n\
+    }\n\nfun main() {\n\tval scan = Scanner(System.`in`)\n\tvar str: String\n\tvar\
+    \ temp: String\n\tvar sum = 0\n\n\twhile (scan.hasNextLine()) {\n\t\tstr = scan.nextLine()\n\
+    \t\tif (\"/exit\" == str) {\n\t\t\tprintln(\"Bye!\")\n\t\t\treturn\n\t\t}\n\t\t\
+    if (\"/help\" == str) {\n\t\t\tprintln(\"The program calculates the sum of numbers\"\
+    )\n\t\t\tcontinue\n\t\t}\n\t\tif (\"\\n\" == str || str.isEmpty())\n\t\t\tcontinue\n\
+    \t\tprintln(calcPolishNotation(polishNotation(str)))\n\t}\n}"
+  learner_created: false
+feedback_link: https://hyperskill.org/projects/88/stages/490/implement
+status: Solved
+record: 4

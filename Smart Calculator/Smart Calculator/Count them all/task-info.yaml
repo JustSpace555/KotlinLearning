@@ -1,0 +1,41 @@
+type: edu
+custom_name: stage3
+files:
+- name: test/Test.java
+  visible: false
+  learner_created: false
+- name: src/calculator/Main.kt
+  visible: true
+  text: |
+    package calculator
+
+    import  java.util.Scanner;
+
+    fun main() {
+        val scan = Scanner(System.`in`)
+        var str: String
+        var temp: String
+        var sum = 0
+
+        while (scan.hasNextLine()) {
+            str = scan.nextLine()
+            if ("/exit".equals(str)) {
+                println("Bye!")
+                return
+            }
+            if ("\n".equals(str) || str.length == 0)
+                continue
+            if (!str.contains(' ')) {
+                println(str)
+                continue
+            }
+            sum += str.substringBefore(' ').toInt()
+            sum += str.substringAfter(' ').toInt()
+            println(sum)
+            sum = 0
+        }
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/projects/88/stages/488/implement
+status: Solved
+record: 3
