@@ -1,6 +1,7 @@
 package com.bignerdranch.nyethack
 
 import java.io.File
+import com.bignerdranch.nyethack.extensions.random
 
 const val TAVERN_NAME = "Space's Universe"
 var patronList = mutableListOf("Eli", "Mordoc", "Sophie")
@@ -9,8 +10,8 @@ val uniquePatrons = mutableSetOf<String>()
 val menuList = File("data/tavern-menu-items.txt").readText().split('\n')
 val patronGold = mutableMapOf<String, Double>()
 
-fun toDragonSpeak(input: String) =
-	input.replace(Regex("[aeiou]")) {
+private fun String.toDragonSpeak() =
+	this.replace(Regex("[aeiou]")) {
 		when (it.value) {
 			"a", "A" -> "4"
 			"e", "E" -> "3"
@@ -20,6 +21,12 @@ fun toDragonSpeak(input: String) =
 			else -> it.value
 		}
 	}
+
+private fun String.frame(padding: Int, formatChar: String = "*"): String {
+	val middle = formatChar.padEnd(padding) + this + formatChar.padStart(padding)
+	val end = middle.indices.joinToString(" ") { formatChar }
+	return "$end\n$middle\n$end"
+}
 
 fun performPurchase(price: Double, patronName: String) {
 	val totalPurse = patronGold.getValue(patronName)
@@ -40,7 +47,7 @@ private fun placeOrder(patronName: String, menuData: String) {
 	performPurchase(price.toDouble(), patronName)
 
 	val phrase = if (name == "Dragon's Breath")
-		"$patronName exclaims: ${toDragonSpeak("Ah, delicious $name!")}"
+		"$patronName exclaims: " + "Ah, delicious $name!".toDragonSpeak()
 	else
 		"$patronName says: Thanks for the $name"
 	println(phrase)
@@ -53,27 +60,17 @@ fun displayPatronBalances() {
 }
 
 fun main() {
-	/*
-	if (com.bignerdranch.nyethack.getPatronList.contains("Eli"))
-		println("The tavern master says: Eli's in the back playing cards.")
-	else
-		println("The tavern master says: Eli isn't here.")
-
-	if (com.bignerdranch.nyethack.getPatronList.containsAll(listOf("Sophie, Mordoc")))
-		println("The tavern master says: Yea, they're seated by the stew kettle.")
-	else
-		println("The tavern master says: Nay, they departed hours ago.")
-	*/
-	(0..9).forEach { uniquePatrons += "${patronList.shuffled().first()} ${lastName.shuffled().first()}" }
+	(0..9).forEach { uniquePatrons += "${patronList.random()} ${lastName.random()}" }
 	println(uniquePatrons)
 	uniquePatrons.forEach { patronGold[it] = 6.0 }
 	var orderCount = 0
 	while (orderCount < 10) {
 		placeOrder(
-			uniquePatrons.shuffled().first(),
-			menuList.shuffled().first()
+			uniquePatrons.random(),
+			menuList.random()
 		)
 		orderCount++
 	}
 	displayPatronBalances()
+	println("Welcome, Space".frame(5))
 }

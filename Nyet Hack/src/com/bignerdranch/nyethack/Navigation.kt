@@ -1,7 +1,5 @@
 package com.bignerdranch.nyethack
 
-import javax.print.attribute.standard.MediaSize
-
 enum class Direction (private val coordinate: Coordinate){
 	NORTH(Coordinate(0,-1)),
 	EAST(Coordinate(1, 0)),

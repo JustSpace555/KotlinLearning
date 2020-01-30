@@ -1,11 +1,12 @@
 package com.bignerdranch.nyethack
 
 import java.io.File
+import com.bignerdranch.nyethack.extensions.random as randomizer
 
 class Player(_name: String,
-			 var healthPoints: Int = 100,
+			 override var healthPoints: Int = 100,
 			 val isBlessed: Boolean = true,
-			 private val isImmortal: Boolean = false) {
+			 private val isImmortal: Boolean = false) : Fightable {
 
 	var name = _name
 		get() = "${field.capitalize()} of $homeTown"
@@ -15,12 +16,8 @@ class Player(_name: String,
 
 	val homeTown by lazy { selectHomeTown() }
 	var currentPosition = Coordinate(0, 0)
-
-	private fun selectHomeTown() = File("data/towns.txt")
-									.readText()
-									.split('\n')
-									.shuffled()
-									.first()
+	override val diceCount: Int = 3
+	override val diceSides: Int = 6
 
 	init {
 		require(healthPoints > 0) {"HealthPoints must be greater than zero."}
@@ -31,6 +28,20 @@ class Player(_name: String,
 		if (name.toLowerCase() == "kar")
 			healthPoints = 40
 	}
+
+	override fun attack(opponent: Fightable): Int {
+		val damageDealt = if (isBlessed)
+			damageRoll * 2
+		else
+			damageRoll
+		opponent.healthPoints -= damageDealt
+		return damageDealt
+	}
+
+	private fun selectHomeTown() = File("data/towns.txt")
+									.readText()
+									.split('\n')
+									.randomizer()
 
 	fun castFireball(numFireballs: Int = 2): Int {
 		val divNum = if (numFireballs > 50) 50 else numFireballs

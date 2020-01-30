@@ -2,6 +2,7 @@ package com.bignerdranch.nyethack
 
 import java.lang.Exception
 import java.lang.IllegalStateException
+import kotlin.system.exitProcess
 
 object Game {
 	private val player = Player("Space")
@@ -13,6 +14,7 @@ object Game {
 
 	init {
 		println("Welcome, adventurer.")
+		currentRoom.ifPlayerHere = true
 		player.castFireball()
 	}
 
@@ -25,7 +27,9 @@ object Game {
 
 			val newRoom = worldMap[newPosition.y][newPosition.x]
 			player.currentPosition = newPosition
+			currentRoom.ifPlayerHere = false
 			currentRoom = newRoom
+			currentRoom.ifPlayerHere = true
 			"OK, you move $direction to the ${newRoom.name}.\n${newRoom.load()}"
 		} catch (e: Exception) {
 			"Invalid direction: $directionInput"
@@ -37,6 +41,19 @@ object Game {
 		println("${player.name} ${player.healthPoints}")
 	}
 
+	private fun getGeolocation(): String =
+		buildString {
+			worldMap.forEachIndexed { y, _ ->
+				worldMap[y].forEachIndexed { x, _ ->
+					if (worldMap[y][x].ifPlayerHere)
+						append("X ")
+					else
+						append("O ")
+				}
+				append('\n')
+			}
+		}
+
 	private class GameInput(arg: String?) {
 		private val input = arg ?: ""
 		val command = input.split(" ")[0]
@@ -44,11 +61,41 @@ object Game {
 
 		private fun commandNotFound() = "I'm not quite sure what you're trying to do."
 
-		fun processCommand() = when(command.toLowerCase()) {
+		fun processCommand(): String = when(command.toLowerCase()) {
+			"quit" -> "quit"
+			"ring" -> if (currentRoom is TownSquare)
+				(currentRoom as TownSquare).ringBell()
+			else
+				"You are not on town square"
 			"move" -> move(argument)
+			"fight" -> fight()
+			"map" -> getGeolocation()
 			else -> commandNotFound()
 		}
 	}
+
+	private fun slay(monster: Monster) {
+		println("${monster.name} did ${monster.attack(player)} damage!")
+		println("${player.name} did ${player.attack(monster)} damage!")
+
+		if (player.healthPoints <= 0) {
+			println(">>>>> You have been defeated! Thanks for playing. <<<<<")
+			exitProcess(0)
+		}
+
+		if (monster.healthPoints <= 0) {
+			println(">>>>> ${monster.name} has been defeated! <<<<<")
+			currentRoom.monster = null
+		}
+	}
+
+	private fun fight() = currentRoom.monster?.let {
+		while (player.healthPoints > 0 && it.healthPoints > 0) {
+			slay(it)
+			Thread.sleep(1000)
+		}
+		"Combat complete."
+	} ?: "There's nothing here to fight."
 
 	fun play() {
 		while (true) {
@@ -57,7 +104,12 @@ object Game {
 			printPlayerStatus()
 
 			print("> Enter your command: ")
-			println(GameInput(readLine()).processCommand())
+			val command = GameInput(readLine()).processCommand()
+			if (command == "quit") {
+				println("Good bye, adventurer!")
+				break
+			}
+			println(command)
 		}
 	}
 }
